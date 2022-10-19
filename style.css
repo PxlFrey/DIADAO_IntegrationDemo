@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@200;400;500&display=swap');
 @font-face {
   font-family: 'Perpetua-Regular';
-  src: url('/fonts/Perpetua/PerpetuaTitlingMTLight2.ttf') format('truetype');
+  src: url('fonts/Perpetua/PerpetuaTitlingMTLight2.ttf') format('truetype');
 }
 /*---- FONTS -END- ----*/
 
@@ -10,6 +10,9 @@
 :root {
     /* ---- COLORS ---- */
     --white-color: #FFF;
+    --brown-color: #C2A68B;
+    --black-color: #000;
+    --grey-color: #707070;
 }
 
 /* ---- VARIABLES - END ---- */
@@ -22,28 +25,31 @@ body, html {
   color: #000;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Perpetua-Regular', serif;
   font-size: 50px;
-  line-height: 1.2em;
+  line-height: 1.1em;
   font-weight: 200;
   margin: 0;
 }
 
-h2 {
-  margin-top: 60px;
-  
-}
-
+h2 { font-size: 40px; margin-top: 60px; letter-spacing: 1px; }
+h3 { font-size: 35px; letter-spacing: 1px; color: var(--white-color); text-align: center; margin: 25px 0 10px 0; }
 p {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6em;
   font-weight: 200;
 
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 a {
   text-decoration: none;
   color: #000;
@@ -54,7 +60,7 @@ hr { width: 150px; margin: 40px 0; }
 
 .btn { 
   display: block;
-  width: 150px;
+  width: 180px;
   border: solid 1px #000;
   padding: 15px 30px;
   text-transform: uppercase;
@@ -63,13 +69,22 @@ hr { width: 150px; margin: 40px 0; }
   text-align: center;
   font-weight: 500;
   margin: 50px 0;
+  transition: all 0.3s ease-in-out;
 }
+.btn:hover {
+  background-color: #000;
+  color: #FFF;
+  width: 160px;
+}
+
+
 /*---- GENERAL - END ----*/
 
 /* ---- NAVIGATION MOBILE ---- */
-.nav-mobile { display:none; width: 100vw; position:fixed; top:0; left:0; right:0; bottom:0; z-index:200; cursor: pointer; }
-.nav-mobile-container { min-width: 375px; height: 100%; overflow: hidden; background-color: #FFF; }  
+.nav-mobile { display:none; width: 100vw; position:fixed; top:0; left:0; right:0; bottom:0; z-index:200; cursor: pointer; font-size: 20px; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 200; }
+.nav-mobile-container { align-items: center; min-width: 375px; height: 100%; overflow: hidden; background-color: #FFF; text-align: center;}  
 nav { margin-top: -20px;}
+.nav-mobile h4 {color: var(--brown-color) }
 nav a { font-family: var(--menu-font); text-transform: uppercase; letter-spacing: 2px; font-size: 32px; }
 
 .logo { margin: 45px 0; }
@@ -83,26 +98,39 @@ nav a { font-family: var(--menu-font); text-transform: uppercase; letter-spacing
 /* ---- STRUCTURE ---- */
 header,
 section,
+.nav-mobile-container,
 .home-container,
 .home-layer { display: flex; }
 
 section,
+.nav-mobile-container,
 .home-container,
 .home-layer { flex-direction:column; }
 
-section { width:100%; height:100%; background-color: #F7f7f7; margin: 0 auto; }
+section { width:100%; height:100%; background-color: var(--white-color); margin: 0 auto; }
+.rooms-container,
+.services-container { padding: 0 30px;}
 
 /*---- HEADER ----*/
-header { position:fixed; height: 50px; width: 100%; z-index: 100; background: transparent; align-items: center; justify-content: center; margin-top: 10px; }
+header { 
+  position:absolute;
+  height: 50px;
+  width: 100%;
+  z-index: 100;
+  background: transparent;
+  align-items: center;
+  justify-content: center;margin-top: 10px; }
 .menu { position: fixed; width: 22px; height: 22px; z-index: 100; top: 20px; left: 30px; cursor: pointer; }
 .header-logo img { height: 44px; }
+.header-vertical { display: none; }
 /*---- HEADER - END ----*/
 
 /*---- HOME ----*/
 #home { width: 100%; height: 100vh; color: #FFF; }
 #home h1, #home p { padding: 0 30px; }
 #home p { width: 330px; height: 90px }
-.home-container, .home-layer { position: relative; width: 100%; height: 100%; z-index: 0; justify-content: end; }
+.home-container,
+.home-layer { position: relative; width: 100%; height: 100%; z-index: 0; justify-content: end; }
 .home-layer { background-color: #000; opacity: 0.32; height: 100%; }
 .home-content, .home-btn { position: absolute; z-index: 100; }
 .home-content { margin-bottom: 200px; }
@@ -118,43 +146,232 @@ header { position:fixed; height: 50px; width: 100%; z-index: 100; background: tr
   text-align: center;
   padding: 15px 30px;
   margin: 40px 10px 40px auto; 
+  transition: all 0.3s ease-in-out;
 }
+.book:hover { padding: 15px 20px; }
 /*---- HOME - END ----*/
 
 /*---- CHAMBRES ----*/
-.rooms-container { padding: 0 30px;}
 #rooms p { width: 330px; }
-
+.slider-container { width: 100%; height: 170px; }
+.slider-container div { height: 100%; }
 /*---- CHAMBRES - END ----*/
 
 /*---- RESTAURANT ----*/
+.services-vertical { display: none; }
+#services h2 { font-size: 36px;}
+#services h2:last-of-type, #rooms h2:last-of-type { margin: 5px 0 0 0; }
+#services p { width: 330px; }
+#services .video { height: 200px; }
+.gallery-bloc { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 390px;
+  height: 37px;
+  margin-left: 40px;
+  background-color: var(--brown-color);
+}
+.gallery-bloc a {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--white-color);
+  opacity: 0.7;
+}
 /*---- RESTAURANT - END ----*/
 
 /*---- OFFRES ----*/
+.offres-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 1000px;
+  margin: 40px 0 0 0;
+}
+.offres-title {
+  display: flex;
+  width: 30%;
+  height: 700px;
+}
+
+.offres-title h2 {
+  writing-mode: vertical-rl;
+  font-size: 52px;
+
+  rotate: 180deg;
+  padding: 0;
+  margin: 0 0 0 30px;
+  text-align: right;
+}
+.v-line {
+  width: 1px;
+  height: 35%;
+  background-color: var(--black-color);
+  margin: 0 20px 0 10px;
+  opacity: 0.8;
+}
+.focus-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  height: 480px;
+  background-color: var(--brown-color);
+  margin-bottom: 50px;
+}
+.focus-img { width: 280px; height: 170px; }
+.focus-content p { 
+  color: var(--white-color);
+  font-family: 'Quicksand';
+  text-align:center; padding:0 10px;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+.focus-content .btn { 
+  border-color: var(--white-color);
+  color: var(--white-color);
+  width: 163px;
+  padding: 15px;
+  margin: 0;
+}
+.focus-text { display: flex; flex-direction: column; align-items: center; }
+.more { display: none; }
+.price {
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  text-align: center;
+}
 /*---- OFFRES - END ----*/
 
 
-/*---- CONTACT ----*/
-/*---- CONTACT - END ----*/
+/*---- FOOTER ----*/
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100px;
+  padding-bottom: 20px;
+  text-align: center;
+}
 
+footer img { width: 30px;}
+footer h3 { font-size: 16px; line-height: 0.9; text-transform: uppercase; letter-spacing: 2px; font-weight: 400; margin: 0; color: var(--brown-color)}
+footer ul { display: inline-flex; }
+footer li { margin: -10px 0; }
+footer svg  { width: 5px; fill: var(--brown-color); padding: 0 2px; }
+/*---- FOOTER - END ----*/
 
+/*---- MEDIA QUERIES ----*/
+@media screen and (min-width: 767px) {
+  h1 { font-size: 90px; }
+  /*---- HOME ----*/
+  #home p { font-size: 16px;}
+  .home-container { justify-content: center; }
+  .home-content { margin-bottom: 0; }
+  .home-btn { bottom: 280px; right: 110px; }
+  /*---- HOME - END ----*/
 
+  /*---- CHAMBRES ----*/
+  .-content { padding: 50px; }
+  .slider-container { height: 500px; margin-top: 20px; }
+  /*---- CHAMBRES - END ----*/  
 
-/*---- HEADER ----*/
-/*---- HEADER - END ----*/
+  /*---- RESTAURANT ----*/
+  .services-content { padding: 50px; }
+  .gallery-bloc { margin: 0 auto; }
+  #services .video { width: 885px; height: 500px; }
+  /*---- RESTAURANT - END ----*/
 
-/*---- HOME ----*/
-/*---- HOME - END ----*/
+  /*---- OFFRES ----*/
+  .offres-container { height: 600px; }
+  .focus-container { display: flex; flex-direction: row; margin: 0 25px; } 
+  .focus-content { margin: 0 20px 0 0; } 
+  /*---- OFFRES - END ----*/
 
-/*---- CHAMBRES ----*/
-/*---- CHAMBRES - END ----*/
+  /*---- FOOTER ----*/
+  footer { padding-bottom: 50px; }
+  footer img { width: 100px;}
+  footer h3 { font-size: 24px; }
+  footer li { margin: 5px 0; }
+  footer svg { width: 10px; }
+  /*---- FOOTER - END ----*/
+}
 
-/*---- RESTAURANT ----*/
-/*---- RESTAURANT - END ----*/
+@media screen and (min-width: 1920px) {
+  .header-vertical { 
+    position: absolute; 
+    display: block;
+    width: 478px;
+    height: 1549px;
+    top: 280px;
+    right: 0;
+    z-index: 0;
+   }
 
-/*---- OFFRES ----*/
-/*---- OFFRES - END ----*/
+  /*---- HOME ----*/
+  .home-content { width: 950px; margin: 180px 0 0 10%; }
+  #home p { font-size: 20px; width: 550px; }
+  #home h1 { font-size: 120px; margin-bottom: 70px; }
+  .home-btn { bottom: 100px; right: 380px; }
+  .book { padding: 35px; }
+  .book:hover { padding: 30px 20px; }
+  /*---- HOME - END ----*/
 
+  /*---- CHAMBRES ----*/
+  .rooms-container { height: 800px; }
+  .rooms-content, .services-content { padding: 8% 15%; }
+  .rooms-content h2, .services-content h2 { line-height: 1; margin: 0; }
+  .rooms-content hr { width: 20%; }
+  #rooms p, #services p { width: 580px; height: 180px; line-height: 32px; padding: 0 0 0 50px; font-size: 15px; }
+  
+  .slider-container { height: 510px; width: 58%; margin-top: 15px; }
+  /*---- CHAMBRES - END ----*/  
 
-/*---- CONTACT ----*/
-/*---- CONTACT - END ----*/
+  /*---- RESTAURANT ----*/
+  .services-vertical { 
+    position: absolute; 
+    display: block;
+    width: 800px;
+    height: 1890px;
+    top: 187%;
+    right: 0;
+    z-index: 0;
+   }
+  #services p { width: 450px; height: 220px; text-align: justify; }
+  #services .video { margin: -50px 0 0 20%; z-index: 500; }
+  .gallery-bloc { width: 280px; height: 37px; margin: 0 0 0 985px; z-index: 500;  }
+
+  /*---- RESTAURANT - END ----*/
+  /*---- OFFRES ----*/
+  .offres-container { justify-content: flex-start; margin: 150px 0; }
+  .offres-title { margin-left: 8%; }
+  .offres-title h2 { font-size: 30px; }
+  .focus-container { margin: 0 90px 0 0; }
+  .focus-content { 
+    width: 685px;
+    height: 603px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+   }
+   .focus-text { width: 253px; height: 100%; margin: 0 auto;  }
+   .focus-text h3 { margin: 80px 0 0 0; font-size: 43px; }
+   .focus-content p { line-height: 32px; font-size: 15px; text-align: justify; margin: 20px 0; }
+   .focus-content .btn { font-size: 15px;}
+   .more { display: initial; }
+   .focus-img { width: 260px; height: 603px; }
+   /*---- OFFRES - END ----*/
+
+    /*---- FOOTER ----*/
+    footer { padding-bottom: 90px; }
+    footer h3 { font-size: 48px; letter-spacing: 4px; }
+    footer svg { width: 12px; }
+    /*---- FOOTER - END ----*/
+}
+/*---- MEDIA QUERIES - END ----*/

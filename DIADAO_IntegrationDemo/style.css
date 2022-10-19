@@ -351,7 +351,7 @@ footer svg  { width: 5px; fill: var(--brown-color); padding: 0 2px; }
   /*---- HOME - END ----*/
 
   /*---- CHAMBRES ----*/
-  .rooms-content { padding: 50px; }
+  .-content { padding: 50px; }
   .slider-container { height: 500px; margin-top: 20px; }
   /*---- CHAMBRES - END ----*/  
 
